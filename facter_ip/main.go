@@ -12,8 +12,7 @@ func getIfaceAddr() {
 	for _, i := range ifaces {
 		addrs, _ := i.Addrs()
 		for addrIndex, address := range addrs {
-			// address, subnet := net.ParseCIDR(cidrRes)
-			fmt.Printf("ip_addr_%s_%d=%s\n", i.Name, addrIndex, address)
+			fmt.Printf("ip_addr_%s_%d=%s\n", i.Name, addrIndex, address) //i.Name is a field of interfaces struct
 		}
 	}
 }
