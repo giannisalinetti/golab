@@ -1,4 +1,10 @@
-// A simple exe to get all the network interface addresses for facter
+// A simple exe to get all the network interface addresses for Facter.
+// By default Facter provides only the first ip address of every interface on the machine.
+// This program adds and extra output in the format 'ip_addr_<iface>_N' where N is the
+// N-th ip address associated.
+
+// Build and install in /etc/facter/facts.d
+  
 package main
 
 import (
@@ -12,7 +18,7 @@ func getIfaceAddr() {
 		addrs, _ := i.Addrs()
 		for addrIndex, address := range addrs {
 			simpleAddr, _, _ := net.ParseCIDR(address.String())
-			fmt.Printf("ip_addr_%s_%d=%s\n", i.Name, addrIndex, simpleAddr) //i.Name is a field of interfaces struct
+			fmt.Printf("ip_addr_%s_%d=%s\n", i.Name, addrIndex, simpleAddr) 
 		}
 	}
 }
